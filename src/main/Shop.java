@@ -4,7 +4,9 @@ import model.Amount;
 import model.Client;
 import model.Employee;
 import model.Product;
+import model.ProductList;
 import model.Sale;
+import utils.Constants;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -17,12 +19,13 @@ import java.util.Scanner;
 
 import dao.Dao;
 import dao.DaoImplFile;
+import dao.DaoImplJaxb;
 import dao.DaoImplXml;
 
 public class Shop {
 
 	public Amount cash;
-	public static ArrayList<Product> inventory;
+	public static ProductList inventory;
 	private ArrayList<Sale> sales;
 	private Employee employee;
 	public Dao dao;
@@ -30,25 +33,29 @@ public class Shop {
 	final static double TAX_RATE = 1.04;
 
 	public Shop() {
-		inventory = new ArrayList<Product>();
+		inventory = new ProductList();
 		sales = new ArrayList<Sale>();
-		cash = new Amount(0.0);
+		cash = new Amount(10.5, Constants.AMOUNT_SYMBOL);
 		employee = new Employee(null, 0, null);
-		dao = new DaoImplXml();
+
+		// dao = new DaoImplFile();
+		// dao = new DaoImplXml();
+		dao = new DaoImplJaxb();
 	}
 
 	/**
 	 * main
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
 	public static void main(String[] args) {
 
 		Shop shop = new Shop();
 		inventory = shop.dao.getInventory();
 		shop.initSession();
-		
+
 		Scanner scanner = new Scanner(System.in);
-			
+
 		int opcion = 0;
 		boolean exit = false;
 
@@ -80,15 +87,15 @@ public class Shop {
 			System.out.println("\n");
 
 			switch (opcion) {
-			
+
 			case 0:
-				if(shop.dao.writeInventory(inventory)) {
-		            System.out.println("Inventario exportando correctamente");
+				if (shop.dao.writeInventory(inventory)) {
+					System.out.println("Inventario exportando correctamente");
 				} else {
-		            System.out.println("Error exportando el inventario");
+					System.out.println("Error exportando el inventario");
 				}
 				break;
-			
+
 			case 1:
 				shop.showCash();
 				break;
@@ -140,10 +147,11 @@ public class Shop {
 			}
 		} while (!exit);
 	}
-	
+
 	/**
 	 * initSession
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
 	private void initSession() {
 		boolean logged = false;
@@ -161,8 +169,7 @@ public class Shop {
 	 * show current total cash
 	 */
 	public void showCash() {
-		System.out
-				.println("Dinero actual: " + cash.getValue() + " " + cash.getCurrency());
+		System.out.println("Dinero actual: " + cash.getValue() + " " + cash.getCurrency());
 	}
 
 	/**
@@ -175,7 +182,7 @@ public class Shop {
 		Product product = findProduct(name);
 		if (product == null) {
 			System.out.print("Precio mayorista: ");
-			double wholesalerPrice = scanner.nextDouble();
+			Amount wholesalerPrice = new Amount(scanner.nextDouble(), Constants.AMOUNT_SYMBOL);
 			System.out.print("Stock: ");
 			int stock = scanner.nextInt();
 			inventory.add(new Product(name, wholesalerPrice, true, stock));
@@ -246,7 +253,7 @@ public class Shop {
 	 */
 	private void showInventory() {
 		System.out.println("Contenido actual de la tienda:");
-		for (Product product : inventory) {
+		for (Product product : inventory.getProducts()) {
 			if (product != null) {
 				System.out.println(product.toString());
 			}
@@ -258,20 +265,20 @@ public class Shop {
 	 */
 	private void sale() {
 
-		boolean paid= false;
+		boolean paid = false;
 		// ask for client name
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Realizar venta, escribir nombre cliente: ");
 		String client_name = sc.nextLine();
 		Client client = new Client(client_name);
 		System.out.println();
-		
+
 		double totalAmount = 0.0;
 		Amount total;
 		ArrayList<Product> venta = new ArrayList<Product>();
 		Product product;
 		String name = "";
-		
+
 		// sale product until input name is not 0
 		while (!name.equals("0")) {
 			System.out.print("Introduce el nombre del producto, escribir 0 para terminar: ");
@@ -285,7 +292,7 @@ public class Shop {
 
 			if (product != null && product.isAvailable()) {
 				productAvailable = true;
-				totalAmount += product.getPublicPrice();
+				totalAmount += product.getPublicPrice().getValue();
 				product.setStock(product.getStock() - 1);
 				// if no more stock, set as not available to sale
 				if (product.getStock() == 0) {
@@ -309,18 +316,18 @@ public class Shop {
 
 		// show cost total
 		totalAmount = totalAmount * TAX_RATE;
-		total = new Amount(totalAmount);
-		
+		total = new Amount(totalAmount, Constants.AMOUNT_SYMBOL);
+
 		paid = client.pay(total);
-		
+
 		cash.setValue(totalAmount + cash.getValue());
 		System.out.println();
 		System.out.println("Venta realizada con éxito, total: " + Math.round(totalAmount * 100.00) / 100.00 + " "
 				+ cash.getCurrency() + " Date: " + formatDate);
 		if (!paid) {
-			System.out.println("Cliente debe: "+client.getBalance());
+			System.out.println("Cliente debe: " + client.getBalance());
 		} else {
-			System.out.println("Saldo restante del cliente: " +client.getBalance());
+			System.out.println("Saldo restante del cliente: " + client.getBalance());
 		}
 
 		// guardamos venta
@@ -352,40 +359,41 @@ public class Shop {
 
 				// Aquí obtenemos el formato que deseamos
 				String formatDate = new SimpleDateFormat("yyyy-MM-dd").format(myDate);
-				
+
 				try {
 
 					String rutaArchivo = "Files" + File.separator + "sales_" + formatDate + ".txt\"";
 					File txt = new File(rutaArchivo);
 					String rutaAbsoluta = txt.getAbsolutePath();
-					
-		            PrintWriter file = new PrintWriter(rutaAbsoluta);
-		            
-		            for (Sale sale : sales) {
+
+					PrintWriter file = new PrintWriter(rutaAbsoluta);
+
+					for (Sale sale : sales) {
 						if (sale != null) {
-							formatDate= new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(sale.getDate());
+							formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(sale.getDate());
 							ArrayList<Product> productList = new ArrayList<Product>();
 							productList = sale.getProducts();
 							String list = "";
-							
+
 							for (Product product : productList) {
-								if(product!=null) {
-									list=list+product.toList();
+								if (product != null) {
+									list = list + product.toList();
 								}
 							}
-							
-							file.println((sales.indexOf(sale)+1)+";Cliente="+sale.getClient()+";Date="+formatDate+";");
-							file.println((sales.indexOf(sale)+1)+";Products="+list);
-							file.println((sales.indexOf(sale)+1)+";Amount="+sale.getAmount()+";");
-						}
-					}	
-					System.out.println("");
-		            System.out.println("Ventas guardadas correctamente");
-		            file.close();
 
-		        } catch (Exception e) {
-		            e.printStackTrace();
-		        } 
+							file.println((sales.indexOf(sale) + 1) + ";Cliente=" + sale.getClient() + ";Date="
+									+ formatDate + ";");
+							file.println((sales.indexOf(sale) + 1) + ";Products=" + list);
+							file.println((sales.indexOf(sale) + 1) + ";Amount=" + sale.getAmount() + ";");
+						}
+					}
+					System.out.println("");
+					System.out.println("Ventas guardadas correctamente");
+					file.close();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -461,7 +469,7 @@ public class Shop {
 	 */
 	public Product findProduct(String name) {
 
-		for (Product product : inventory) {
+		for (Product product : inventory.getProducts()) {
 			if (product.getName().equalsIgnoreCase(name)) {
 				return product;
 			}

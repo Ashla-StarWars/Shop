@@ -48,4 +48,4 @@
 48;Product:Nashi;Stock:13;
 49;Product:Caja de frutas variadas;Stock:2;
 50;Product:Frutas deshidratadas surtidas;Stock:5;
-Numero total de productos:50
+Numero total de productos:50;

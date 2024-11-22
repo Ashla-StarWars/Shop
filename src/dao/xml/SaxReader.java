@@ -1,39 +1,44 @@
 package dao.xml;
 
-import java.util.ArrayList;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import model.Amount;
 import model.Product;
+import model.ProductList;
 
 public class SaxReader extends DefaultHandler {
-	
-	private ArrayList<Product> products;
+
+	private ProductList products;
 	private Product product;
+	private Amount amount;
 	private String value;
 	private String parsedElement;
 
 	/**
 	 * @return the products
 	 */
-	public ArrayList<Product> getProducts() {
+	public ProductList getProducts() {
 		return products;
 	}
-	
+
 	@Override
 	public void startDocument() throws SAXException {
-		this.products = new ArrayList<>();
+		this.products = new ProductList();
 	}
 
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		switch (qName) {
 		case "product":
-			this.product = new Product(attributes.getValue("name") != null ? attributes.getValue("name") : "empty", 0, true, 0);
+			this.product = new Product(attributes.getValue("name") != null ? attributes.getValue("name") : "empty",
+					null, true, 0);
 			break;
 		case "wholesalerPrice":
+			String currency = attributes.getValue("currency");
+			this.amount = new Amount();
+			this.amount.setCurrency(currency);
 			break;
 		case "stock":
 			break;
@@ -48,8 +53,12 @@ public class SaxReader extends DefaultHandler {
 		case "product":
 			break;
 		case "wholesalerPrice":
-			this.product.setWholesalerPrice(Float.valueOf(value));
-			this.product.setPublicPrice(2*this.product.getWholesalerPrice());
+			this.amount.setValue(Double.valueOf(value));
+			this.product.setWholesalerPrice(this.amount);
+			Amount publicPrice = new Amount();
+			publicPrice.setValue(this.amount.getValue() * 2);
+			publicPrice.setCurrency(this.amount.getCurrency());
+			this.product.setPublicPrice(publicPrice);
 			break;
 		case "stock":
 			this.product.setStock(Integer.valueOf(value));

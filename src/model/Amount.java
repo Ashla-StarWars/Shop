@@ -1,31 +1,48 @@
 package model;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlValue;
+
 public class Amount {
 	private double value;
-	private final String currency = "€";
-	
-	public Amount(double value) {
-		super();
-		this.value = value;
+	private String currency;
+
+	public Amount() {
 	}
 
+	/*
+	 * public Amount(double value) { super(); this.value = value; }
+	 */
 
+	public Amount(double value, String currency) {
+		super();
+		this.value = value;
+		this.currency = currency;
+	}
+
+	@XmlValue
 	public double getValue() {
 		return value;
 	}
+
 	public void setValue(double value) {
 		this.value = Math.round(value * 100.00) / 100.00;
 	}
 
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	@XmlAttribute(name = "currency")
 	public String getCurrency() {
 		return currency;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.value + " " + this.currency;
 	}
-	
+
 	public String toList() {
 		return this.value + this.currency;
 	}

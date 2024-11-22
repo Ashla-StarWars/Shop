@@ -1,15 +1,14 @@
 package exception;
 
-public class LimitLoginException extends Exception{
+public class LimitLoginException extends Exception {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public LimitLoginException(String message) {
-        super(message);
-    }
-    
-    
+		super(message);
+	}
+
 }

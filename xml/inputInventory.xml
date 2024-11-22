@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<products>
+  <product name="Manzana">
+    <wholesalerPrice currency="Euro">10.00</wholesalerPrice>
+    <stock>10</stock>
+  </product>
+  <product name="Plátano">
+    <wholesalerPrice currency="Euro">8.50</wholesalerPrice>
+    <stock>15</stock>
+  </product>
+  <product name="Naranja">
+    <wholesalerPrice currency="Euro">12.00</wholesalerPrice>
+    <stock>20</stock>
+  </product>
+  <product name="Pera">
+    <wholesalerPrice currency="Euro">9.00</wholesalerPrice>
+    <stock>12</stock>
+  </product>
+  <product name="Uva">
+    <wholesalerPrice currency="Euro">15.50</wholesalerPrice>
+    <stock>8</stock>
+  </product>
+  <product name="Sandía">
+    <wholesalerPrice currency="Euro">20.00</wholesalerPrice>
+    <stock>5</stock>
+  </product>
+  <product name="Fresa">
+    <wholesalerPrice currency="Euro">18.00</wholesalerPrice>
+    <stock>9</stock>
+  </product>
+  <product name="Kiwi">
+    <wholesalerPrice currency="Euro">11.50</wholesalerPrice>
+    <stock>14</stock>
+  </product>
+  <product name="Piña">
+    <wholesalerPrice currency="Euro">16.00</wholesalerPrice>
+    <stock>11</stock>
+  </product>
+  <product name="Mango">
+    <wholesalerPrice currency="Euro">22.00</wholesalerPrice>
+    <stock>7</stock>
+  </product>
+  <product name="Melón">
+    <wholesalerPrice currency="Euro">19.00</wholesalerPrice>
+    <stock>6</stock>
+  </product>
+  <product name="Cereza">
+    <wholesalerPrice currency="Euro">25.00</wholesalerPrice>
+    <stock>4</stock>
+  </product>
+  <product name="Ciruela">
+    <wholesalerPrice currency="Euro">13.50</wholesalerPrice>
+    <stock>16</stock>
+  </product>
+  <product name="Limón">
+    <wholesalerPrice currency="Euro">7.00</wholesalerPrice>
+    <stock>18</stock>
+  </product>
+  <product name="Papaya">
+    <wholesalerPrice currency="Euro">21.00</wholesalerPrice>
+    <stock>10</stock>
+  </product>
+  <product name="Moras">
+    <wholesalerPrice currency="Euro">30.00</wholesalerPrice>
+    <stock>3</stock>
+  </product>
+  <product name="Frutas del bosque">
+    <wholesalerPrice currency="Euro">28.50</wholesalerPrice>
+    <stock>6</stock>
+  </product>
+  <product name="Guayaba">
+    <wholesalerPrice currency="Euro">14.50</wholesalerPrice>
+    <stock>13</stock>
+  </product>
+  <product name="Granada">
+    <wholesalerPrice currency="Euro">17.50</wholesalerPrice>
+    <stock>9</stock>
+  </product>
+  <product name="Caqui">
+    <wholesalerPrice currency="Euro">15.00</wholesalerPrice>
+    <stock>12</stock>
+  </product>
+  <product name="Coco">
+    <wholesalerPrice currency="Euro">27.00</wholesalerPrice>
+    <stock>8</stock>
+  </product>
+  <product name="Higo">
+    <wholesalerPrice currency="Euro">11.00</wholesalerPrice>
+    <stock>17</stock>
+  </product>
+  <product name="Damasco">
+    <wholesalerPrice currency="Euro">10.50</wholesalerPrice>
+    <stock>20</stock>
+  </product>
+  <product name="Carambola">
+    <wholesalerPrice currency="Euro">26.00</wholesalerPrice>
+    <stock>5</stock>
+  </product>
+  <product name="Pitahaya">
+    <wholesalerPrice currency="Euro">29.00</wholesalerPrice>
+    <stock>4</stock>
+  </product>
+  <product name="Maracuyá">
+    <wholesalerPrice currency="Euro">23.50</wholesalerPrice>
+    <stock>7</stock>
+  </product>
+  <product name="Guineo">
+    <wholesalerPrice currency="Euro">9.50</wholesalerPrice>
+    <stock>15</stock>
+  </product>
+  <product name="Lima">
+    <wholesalerPrice currency="Euro">8.00</wholesalerPrice>
+    <stock>19</stock>
+  </product>
+  <product name="Melocotón">
+    <wholesalerPrice currency="Euro">12.50</wholesalerPrice>
+    <stock>14</stock>
+  </product>
+  <product name="Nectarina">
+    <wholesalerPrice currency="Euro">13.00</wholesalerPrice>
+    <stock>13</stock>
+  </product>
+  <product name="Mora">
+    <wholesalerPrice currency="Euro">16.50</wholesalerPrice>
+    <stock>11</stock>
+  </product>
+  <product name="Kiwi dorado">
+    <wholesalerPrice currency="Euro">18.50</wholesalerPrice>
+    <stock>10</stock>
+  </product>
+  <product name="Uchuva">
+    <wholesalerPrice currency="Euro">22.50</wholesalerPrice>
+    <stock>8</stock>
+  </product>
+  <product name="Tamarindo">
+    <wholesalerPrice currency="Euro">24.50</wholesalerPrice>
+    <stock>6</stock>
+  </product>
+  <product name="Feijoa">
+    <wholesalerPrice currency="Euro">20.50</wholesalerPrice>
+    <stock>9</stock>
+  </product>
+  <product name="Zarzamora">
+    <wholesalerPrice currency="Euro">19.50</wholesalerPrice>
+    <stock>10</stock>
+  </product>
+  <product name="Litchi">
+    <wholesalerPrice currency="Euro">32.00</wholesalerPrice>
+    <stock>5</stock>
+  </product>
+  <product name="Tamarillo">
+    <wholesalerPrice currency="Euro">25.50</wholesalerPrice>
+    <stock>7</stock>
+  </product>
+  <product name="Níspero">
+    <wholesalerPrice currency="Euro">14.00</wholesalerPrice>
+    <stock>15</stock>
+  </product>
+  <product name="Pitanga">
+    <wholesalerPrice currency="Euro">15.50</wholesalerPrice>
+    <stock>14</stock>
+  </product>
+  <product name="Membrillo">
+    <wholesalerPrice currency="Euro">17.00</wholesalerPrice>
+    <stock>13</stock>
+  </product>
+  <product name="Grosella">
+    <wholesalerPrice currency="Euro">28.00</wholesalerPrice>
+    <stock>6</stock>
+  </product>
+  <product name="Guanábana">
+    <wholesalerPrice currency="Euro">30.50</wholesalerPrice>
+    <stock>5</stock>
+  </product>
+  <product name="Rambután">
+    <wholesalerPrice currency="Euro">33.00</wholesalerPrice>
+    <stock>4</stock>
+  </product>
+  <product name="Mangostán">
+    <wholesalerPrice currency="Euro">35.50</wholesalerPrice>
+    <stock>3</stock>
+  </product>
+  <product name="Tuna">
+    <wholesalerPrice currency="Euro">26.50</wholesalerPrice>
+    <stock>8</stock>
+  </product>
+  <product name="Yuzu">
+    <wholesalerPrice currency="Euro">24.00</wholesalerPrice>
+    <stock>11</stock>
+  </product>
+  <product name="Nashi">
+    <wholesalerPrice currency="Euro">21.50</wholesalerPrice>
+    <stock>13</stock>
+  </product>
+  <product name="Caja de frutas variadas">
+    <wholesalerPrice currency="Euro">50.00</wholesalerPrice>
+    <stock>2</stock>
+  </product>
+  <product name="Frutas deshidratadas surtidas">
+    <wholesalerPrice currency="Euro">40.00</wholesalerPrice>
+    <stock>5</stock>
+  </product>
+</products>
