@@ -1,1 +1,303 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><products total="50"><product id="1" name="Manzana"><available>true</available><wholesalerPrice currency="Euro">10.0</wholesalerPrice><publicPrice currency="Euro">20.0</publicPrice><stock>10</stock></product><product id="2" name="Plátano"><available>true</available><wholesalerPrice currency="Euro">8.5</wholesalerPrice><publicPrice currency="Euro">17.0</publicPrice><stock>15</stock></product><product id="3" name="Naranja"><available>true</available><wholesalerPrice currency="Euro">12.0</wholesalerPrice><publicPrice currency="Euro">24.0</publicPrice><stock>20</stock></product><product id="4" name="Pera"><available>true</available><wholesalerPrice currency="Euro">9.0</wholesalerPrice><publicPrice currency="Euro">18.0</publicPrice><stock>12</stock></product><product id="5" name="Uva"><available>true</available><wholesalerPrice currency="Euro">15.5</wholesalerPrice><publicPrice currency="Euro">31.0</publicPrice><stock>8</stock></product><product id="6" name="Sandía"><available>true</available><wholesalerPrice currency="Euro">20.0</wholesalerPrice><publicPrice currency="Euro">40.0</publicPrice><stock>5</stock></product><product id="7" name="Fresa"><available>true</available><wholesalerPrice currency="Euro">18.0</wholesalerPrice><publicPrice currency="Euro">36.0</publicPrice><stock>9</stock></product><product id="8" name="Kiwi"><available>true</available><wholesalerPrice currency="Euro">11.5</wholesalerPrice><publicPrice currency="Euro">23.0</publicPrice><stock>14</stock></product><product id="9" name="Piña"><available>true</available><wholesalerPrice currency="Euro">16.0</wholesalerPrice><publicPrice currency="Euro">32.0</publicPrice><stock>11</stock></product><product id="10" name="Mango"><available>true</available><wholesalerPrice currency="Euro">22.0</wholesalerPrice><publicPrice currency="Euro">44.0</publicPrice><stock>7</stock></product><product id="11" name="Melón"><available>true</available><wholesalerPrice currency="Euro">19.0</wholesalerPrice><publicPrice currency="Euro">38.0</publicPrice><stock>6</stock></product><product id="12" name="Cereza"><available>true</available><wholesalerPrice currency="Euro">25.0</wholesalerPrice><publicPrice currency="Euro">50.0</publicPrice><stock>4</stock></product><product id="13" name="Ciruela"><available>true</available><wholesalerPrice currency="Euro">13.5</wholesalerPrice><publicPrice currency="Euro">27.0</publicPrice><stock>16</stock></product><product id="14" name="Limón"><available>true</available><wholesalerPrice currency="Euro">7.0</wholesalerPrice><publicPrice currency="Euro">14.0</publicPrice><stock>18</stock></product><product id="15" name="Papaya"><available>true</available><wholesalerPrice currency="Euro">21.0</wholesalerPrice><publicPrice currency="Euro">42.0</publicPrice><stock>10</stock></product><product id="16" name="Moras"><available>true</available><wholesalerPrice currency="Euro">30.0</wholesalerPrice><publicPrice currency="Euro">60.0</publicPrice><stock>3</stock></product><product id="17" name="Frutas del bosque"><available>true</available><wholesalerPrice currency="Euro">28.5</wholesalerPrice><publicPrice currency="Euro">57.0</publicPrice><stock>6</stock></product><product id="18" name="Guayaba"><available>true</available><wholesalerPrice currency="Euro">14.5</wholesalerPrice><publicPrice currency="Euro">29.0</publicPrice><stock>13</stock></product><product id="19" name="Granada"><available>true</available><wholesalerPrice currency="Euro">17.5</wholesalerPrice><publicPrice currency="Euro">35.0</publicPrice><stock>9</stock></product><product id="20" name="Caqui"><available>true</available><wholesalerPrice currency="Euro">15.0</wholesalerPrice><publicPrice currency="Euro">30.0</publicPrice><stock>12</stock></product><product id="21" name="Coco"><available>true</available><wholesalerPrice currency="Euro">27.0</wholesalerPrice><publicPrice currency="Euro">54.0</publicPrice><stock>8</stock></product><product id="22" name="Higo"><available>true</available><wholesalerPrice currency="Euro">11.0</wholesalerPrice><publicPrice currency="Euro">22.0</publicPrice><stock>17</stock></product><product id="23" name="Damasco"><available>true</available><wholesalerPrice currency="Euro">10.5</wholesalerPrice><publicPrice currency="Euro">21.0</publicPrice><stock>20</stock></product><product id="24" name="Carambola"><available>true</available><wholesalerPrice currency="Euro">26.0</wholesalerPrice><publicPrice currency="Euro">52.0</publicPrice><stock>5</stock></product><product id="25" name="Pitahaya"><available>true</available><wholesalerPrice currency="Euro">29.0</wholesalerPrice><publicPrice currency="Euro">58.0</publicPrice><stock>4</stock></product><product id="26" name="Maracuyá"><available>true</available><wholesalerPrice currency="Euro">23.5</wholesalerPrice><publicPrice currency="Euro">47.0</publicPrice><stock>7</stock></product><product id="27" name="Guineo"><available>true</available><wholesalerPrice currency="Euro">9.5</wholesalerPrice><publicPrice currency="Euro">19.0</publicPrice><stock>15</stock></product><product id="28" name="Lima"><available>true</available><wholesalerPrice currency="Euro">8.0</wholesalerPrice><publicPrice currency="Euro">16.0</publicPrice><stock>19</stock></product><product id="29" name="Melocotón"><available>true</available><wholesalerPrice currency="Euro">12.5</wholesalerPrice><publicPrice currency="Euro">25.0</publicPrice><stock>14</stock></product><product id="30" name="Nectarina"><available>true</available><wholesalerPrice currency="Euro">13.0</wholesalerPrice><publicPrice currency="Euro">26.0</publicPrice><stock>13</stock></product><product id="31" name="Mora"><available>true</available><wholesalerPrice currency="Euro">16.5</wholesalerPrice><publicPrice currency="Euro">33.0</publicPrice><stock>11</stock></product><product id="32" name="Kiwi dorado"><available>true</available><wholesalerPrice currency="Euro">18.5</wholesalerPrice><publicPrice currency="Euro">37.0</publicPrice><stock>10</stock></product><product id="33" name="Uchuva"><available>true</available><wholesalerPrice currency="Euro">22.5</wholesalerPrice><publicPrice currency="Euro">45.0</publicPrice><stock>8</stock></product><product id="34" name="Tamarindo"><available>true</available><wholesalerPrice currency="Euro">24.5</wholesalerPrice><publicPrice currency="Euro">49.0</publicPrice><stock>6</stock></product><product id="35" name="Feijoa"><available>true</available><wholesalerPrice currency="Euro">20.5</wholesalerPrice><publicPrice currency="Euro">41.0</publicPrice><stock>9</stock></product><product id="36" name="Zarzamora"><available>true</available><wholesalerPrice currency="Euro">19.5</wholesalerPrice><publicPrice currency="Euro">39.0</publicPrice><stock>10</stock></product><product id="37" name="Litchi"><available>true</available><wholesalerPrice currency="Euro">32.0</wholesalerPrice><publicPrice currency="Euro">64.0</publicPrice><stock>5</stock></product><product id="38" name="Tamarillo"><available>true</available><wholesalerPrice currency="Euro">25.5</wholesalerPrice><publicPrice currency="Euro">51.0</publicPrice><stock>7</stock></product><product id="39" name="Níspero"><available>true</available><wholesalerPrice currency="Euro">14.0</wholesalerPrice><publicPrice currency="Euro">28.0</publicPrice><stock>15</stock></product><product id="40" name="Pitanga"><available>true</available><wholesalerPrice currency="Euro">15.5</wholesalerPrice><publicPrice currency="Euro">31.0</publicPrice><stock>14</stock></product><product id="41" name="Membrillo"><available>true</available><wholesalerPrice currency="Euro">17.0</wholesalerPrice><publicPrice currency="Euro">34.0</publicPrice><stock>13</stock></product><product id="42" name="Grosella"><available>true</available><wholesalerPrice currency="Euro">28.0</wholesalerPrice><publicPrice currency="Euro">56.0</publicPrice><stock>6</stock></product><product id="43" name="Guanábana"><available>true</available><wholesalerPrice currency="Euro">30.5</wholesalerPrice><publicPrice currency="Euro">61.0</publicPrice><stock>5</stock></product><product id="44" name="Rambután"><available>true</available><wholesalerPrice currency="Euro">33.0</wholesalerPrice><publicPrice currency="Euro">66.0</publicPrice><stock>4</stock></product><product id="45" name="Mangostán"><available>true</available><wholesalerPrice currency="Euro">35.5</wholesalerPrice><publicPrice currency="Euro">71.0</publicPrice><stock>3</stock></product><product id="46" name="Tuna"><available>true</available><wholesalerPrice currency="Euro">26.5</wholesalerPrice><publicPrice currency="Euro">53.0</publicPrice><stock>8</stock></product><product id="47" name="Yuzu"><available>true</available><wholesalerPrice currency="Euro">24.0</wholesalerPrice><publicPrice currency="Euro">48.0</publicPrice><stock>11</stock></product><product id="48" name="Nashi"><available>true</available><wholesalerPrice currency="Euro">21.5</wholesalerPrice><publicPrice currency="Euro">43.0</publicPrice><stock>13</stock></product><product id="49" name="Caja de frutas variadas"><available>true</available><wholesalerPrice currency="Euro">50.0</wholesalerPrice><publicPrice currency="Euro">100.0</publicPrice><stock>2</stock></product><product id="50" name="Frutas deshidratadas surtidas"><available>true</available><wholesalerPrice currency="Euro">40.0</wholesalerPrice><publicPrice currency="Euro">80.0</publicPrice><stock>5</stock></product></products>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<products total="50">
+	<product id="1" name="Manzana">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">10.0</wholesalerPrice>
+		<publicPrice currency="Euro">20.0</publicPrice>
+		<stock>10</stock>
+	</product>
+	<product id="2" name="Plátano">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">8.5</wholesalerPrice>
+		<publicPrice currency="Euro">17.0</publicPrice>
+		<stock>15</stock>
+	</product>
+	<product id="3" name="Naranja">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">12.0</wholesalerPrice>
+		<publicPrice currency="Euro">24.0</publicPrice>
+		<stock>20</stock>
+	</product>
+	<product id="4" name="Pera">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">9.0</wholesalerPrice>
+		<publicPrice currency="Euro">18.0</publicPrice>
+		<stock>12</stock>
+	</product>
+	<product id="5" name="Uva">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">15.5</wholesalerPrice>
+		<publicPrice currency="Euro">31.0</publicPrice>
+		<stock>8</stock>
+	</product>
+	<product id="6" name="Sandía">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">20.0</wholesalerPrice>
+		<publicPrice currency="Euro">40.0</publicPrice>
+		<stock>5</stock>
+	</product>
+	<product id="7" name="Fresa">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">18.0</wholesalerPrice>
+		<publicPrice currency="Euro">36.0</publicPrice>
+		<stock>9</stock>
+	</product>
+	<product id="8" name="Kiwi">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">11.5</wholesalerPrice>
+		<publicPrice currency="Euro">23.0</publicPrice>
+		<stock>14</stock>
+	</product>
+	<product id="9" name="Piña">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">16.0</wholesalerPrice>
+		<publicPrice currency="Euro">32.0</publicPrice>
+		<stock>11</stock>
+	</product>
+	<product id="10" name="Mango">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">22.0</wholesalerPrice>
+		<publicPrice currency="Euro">44.0</publicPrice>
+		<stock>7</stock>
+	</product>
+	<product id="11" name="Melón">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">19.0</wholesalerPrice>
+		<publicPrice currency="Euro">38.0</publicPrice>
+		<stock>6</stock>
+	</product>
+	<product id="12" name="Cereza">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">25.0</wholesalerPrice>
+		<publicPrice currency="Euro">50.0</publicPrice>
+		<stock>4</stock>
+	</product>
+	<product id="13" name="Ciruela">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">13.5</wholesalerPrice>
+		<publicPrice currency="Euro">27.0</publicPrice>
+		<stock>16</stock>
+	</product>
+	<product id="14" name="Limón">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">7.0</wholesalerPrice>
+		<publicPrice currency="Euro">14.0</publicPrice>
+		<stock>18</stock>
+	</product>
+	<product id="15" name="Papaya">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">21.0</wholesalerPrice>
+		<publicPrice currency="Euro">42.0</publicPrice>
+		<stock>10</stock>
+	</product>
+	<product id="16" name="Moras">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">30.0</wholesalerPrice>
+		<publicPrice currency="Euro">60.0</publicPrice>
+		<stock>3</stock>
+	</product>
+	<product id="17" name="Frutas del bosque">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">28.5</wholesalerPrice>
+		<publicPrice currency="Euro">57.0</publicPrice>
+		<stock>6</stock>
+	</product>
+	<product id="18" name="Guayaba">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">14.5</wholesalerPrice>
+		<publicPrice currency="Euro">29.0</publicPrice>
+		<stock>13</stock>
+	</product>
+	<product id="19" name="Granada">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">17.5</wholesalerPrice>
+		<publicPrice currency="Euro">35.0</publicPrice>
+		<stock>9</stock>
+	</product>
+	<product id="20" name="Caqui">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">15.0</wholesalerPrice>
+		<publicPrice currency="Euro">30.0</publicPrice>
+		<stock>12</stock>
+	</product>
+	<product id="21" name="Coco">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">27.0</wholesalerPrice>
+		<publicPrice currency="Euro">54.0</publicPrice>
+		<stock>8</stock>
+	</product>
+	<product id="22" name="Higo">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">11.0</wholesalerPrice>
+		<publicPrice currency="Euro">22.0</publicPrice>
+		<stock>17</stock>
+	</product>
+	<product id="23" name="Damasco">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">10.5</wholesalerPrice>
+		<publicPrice currency="Euro">21.0</publicPrice>
+		<stock>20</stock>
+	</product>
+	<product id="24" name="Carambola">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">26.0</wholesalerPrice>
+		<publicPrice currency="Euro">52.0</publicPrice>
+		<stock>5</stock>
+	</product>
+	<product id="25" name="Pitahaya">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">29.0</wholesalerPrice>
+		<publicPrice currency="Euro">58.0</publicPrice>
+		<stock>4</stock>
+	</product>
+	<product id="26" name="Maracuyá">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">23.5</wholesalerPrice>
+		<publicPrice currency="Euro">47.0</publicPrice>
+		<stock>7</stock>
+	</product>
+	<product id="27" name="Guineo">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">9.5</wholesalerPrice>
+		<publicPrice currency="Euro">19.0</publicPrice>
+		<stock>15</stock>
+	</product>
+	<product id="28" name="Lima">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">8.0</wholesalerPrice>
+		<publicPrice currency="Euro">16.0</publicPrice>
+		<stock>19</stock>
+	</product>
+	<product id="29" name="Melocotón">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">12.5</wholesalerPrice>
+		<publicPrice currency="Euro">25.0</publicPrice>
+		<stock>14</stock>
+	</product>
+	<product id="30" name="Nectarina">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">13.0</wholesalerPrice>
+		<publicPrice currency="Euro">26.0</publicPrice>
+		<stock>13</stock>
+	</product>
+	<product id="31" name="Mora">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">16.5</wholesalerPrice>
+		<publicPrice currency="Euro">33.0</publicPrice>
+		<stock>11</stock>
+	</product>
+	<product id="32" name="Kiwi dorado">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">18.5</wholesalerPrice>
+		<publicPrice currency="Euro">37.0</publicPrice>
+		<stock>10</stock>
+	</product>
+	<product id="33" name="Uchuva">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">22.5</wholesalerPrice>
+		<publicPrice currency="Euro">45.0</publicPrice>
+		<stock>8</stock>
+	</product>
+	<product id="34" name="Tamarindo">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">24.5</wholesalerPrice>
+		<publicPrice currency="Euro">49.0</publicPrice>
+		<stock>6</stock>
+	</product>
+	<product id="35" name="Feijoa">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">20.5</wholesalerPrice>
+		<publicPrice currency="Euro">41.0</publicPrice>
+		<stock>9</stock>
+	</product>
+	<product id="36" name="Zarzamora">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">19.5</wholesalerPrice>
+		<publicPrice currency="Euro">39.0</publicPrice>
+		<stock>10</stock>
+	</product>
+	<product id="37" name="Litchi">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">32.0</wholesalerPrice>
+		<publicPrice currency="Euro">64.0</publicPrice>
+		<stock>5</stock>
+	</product>
+	<product id="38" name="Tamarillo">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">25.5</wholesalerPrice>
+		<publicPrice currency="Euro">51.0</publicPrice>
+		<stock>7</stock>
+	</product>
+	<product id="39" name="Níspero">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">14.0</wholesalerPrice>
+		<publicPrice currency="Euro">28.0</publicPrice>
+		<stock>15</stock>
+	</product>
+	<product id="40" name="Pitanga">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">15.5</wholesalerPrice>
+		<publicPrice currency="Euro">31.0</publicPrice>
+		<stock>14</stock>
+	</product>
+	<product id="41" name="Membrillo">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">17.0</wholesalerPrice>
+		<publicPrice currency="Euro">34.0</publicPrice>
+		<stock>13</stock>
+	</product>
+	<product id="42" name="Grosella">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">28.0</wholesalerPrice>
+		<publicPrice currency="Euro">56.0</publicPrice>
+		<stock>6</stock>
+	</product>
+	<product id="43" name="Guanábana">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">30.5</wholesalerPrice>
+		<publicPrice currency="Euro">61.0</publicPrice>
+		<stock>5</stock>
+	</product>
+	<product id="44" name="Rambután">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">33.0</wholesalerPrice>
+		<publicPrice currency="Euro">66.0</publicPrice>
+		<stock>4</stock>
+	</product>
+	<product id="45" name="Mangostán">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">35.5</wholesalerPrice>
+		<publicPrice currency="Euro">71.0</publicPrice>
+		<stock>3</stock>
+	</product>
+	<product id="46" name="Tuna">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">26.5</wholesalerPrice>
+		<publicPrice currency="Euro">53.0</publicPrice>
+		<stock>8</stock>
+	</product>
+	<product id="47" name="Yuzu">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">24.0</wholesalerPrice>
+		<publicPrice currency="Euro">48.0</publicPrice>
+		<stock>11</stock>
+	</product>
+	<product id="48" name="Nashi">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">21.5</wholesalerPrice>
+		<publicPrice currency="Euro">43.0</publicPrice>
+		<stock>13</stock>
+	</product>
+	<product id="49" name="Caja de frutas variadas">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">50.0</wholesalerPrice>
+		<publicPrice currency="Euro">100.0</publicPrice>
+		<stock>2</stock>
+	</product>
+	<product id="50" name="Frutas deshidratadas surtidas">
+		<available>true</available>
+		<wholesalerPrice currency="Euro">40.0</wholesalerPrice>
+		<publicPrice currency="Euro">80.0</publicPrice>
+		<stock>5</stock>
+	</product>
+</products>
