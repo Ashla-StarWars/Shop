@@ -9,6 +9,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import exception.EmployeeNotFoundException;
 import exception.InvalidPasswordException;
 
@@ -82,52 +85,124 @@ public class DaoImplJDBC implements Dao {
 	public ProductList getInventory() {
 		connect();
 		ProductList inventory = new ProductList();
-		// Prepare query
 		String query = "SELECT * FROM inventory";
-
 		try (PreparedStatement ps = connection.prepareStatement(query)) {
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
-					
-					Product item = new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("wholesalerPrice"), rs.getBoolean("available"), rs.getInt("stock"));
-					System.out.println(item.toString());
+					Product item = new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("wholesalerPrice"),
+							rs.getBoolean("available"), rs.getInt("stock"));
 					inventory.add(item);
-				} 
-			} catch (SQLException e) {
-				// In case of an SQL error
-				e.printStackTrace();
+				}
 			}
 		} catch (SQLException e) {
-			// In case of an SQL error
 			e.printStackTrace();
+		} finally {
+			disconnect();
 		}
-		disconnect();
 		return inventory;
-		
 	}
 
 	@Override
 	public boolean writeInventory(ProductList lista) {
-		// TODO Auto-generated method stub
-		return false;
+		connect();
+		boolean isExported = false;
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String formattedDate = now.format(formatter);
+
+		// Borrar tabla antes de guardar datos
+/*
+		String truncateQuery = "TRUNCATE TABLE historical_inventory;";
+		try (PreparedStatement ps = connection.prepareStatement(truncateQuery)) {
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+*/
+		for (Product product : lista.getProducts()) {
+
+			String query = "INSERT INTO historical_inventory (id_product, name, wholesalerPrice, available, stock, created_at) VALUES (?, ?, ?, ?, ?, ?)";
+			try (PreparedStatement statement = connection.prepareStatement(query)) {
+				statement.setInt(1, product.getId());
+				statement.setString(2, product.getName());
+				statement.setDouble(3, product.getWholesalerPrice().getValue());
+				statement.setBoolean(4, product.isAvailable());
+				statement.setInt(5, product.getStock());
+				statement.setString(6, formattedDate);
+				statement.executeUpdate();
+				isExported = true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		disconnect();
+		return isExported;
 	}
 
 	@Override
-	public void addProduct(Product item) {
-		// TODO Auto-generated method stub
-		
+	public void addProduct(Product product) {
+		connect();
+		String query = "INSERT INTO inventory (id, name, wholesalerPrice, available, stock) VALUES (?, ?, ?, ?, ?);";
+
+		try (PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setInt(1, product.getId());
+			statement.setString(2, product.getName());
+			statement.setDouble(3, product.getWholesalerPrice().getValue());
+			statement.setBoolean(4, product.isAvailable());
+			statement.setInt(5, product.getStock());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+
 	}
 
 	@Override
-	public void updateProduct(Product item) {
-		// TODO Auto-generated method stub
-		
+	public void updateProduct(Product product) {
+		connect();
+	    String query = "UPDATE inventory SET stock = ? WHERE id = ?;";
+
+	    try (PreparedStatement statement = connection.prepareStatement(query)) {
+	        statement.setInt(1, product.getStock());
+	        statement.setInt(2, product.getId());
+
+	        int rowsAffected = statement.executeUpdate();
+	        if (rowsAffected > 0) {
+	            System.out.println("Stock actualizado correctamente: " + product.getName());
+	        } else {
+	            System.out.println("No se encontró el producto: " + product.getName());
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        disconnect();
+	    }
+
 	}
 
 	@Override
-	public void deleteProduct(Product item) {
-		// TODO Auto-generated method stub
-		
+	public void deleteProduct(Product product) {
+	    connect();
+	    String query = "DELETE FROM inventory WHERE id = ?;";
+
+	    try (PreparedStatement statement = connection.prepareStatement(query)) {
+	        statement.setInt(1, product.getId());
+
+	        int rowsAffected = statement.executeUpdate();
+	        if (rowsAffected > 0) {
+	            System.out.println("Producto eliminado correctamente: " + product.getName());
+	        } else {
+	            System.out.println("No se encontró el producto: " + product.getName());
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        disconnect();
+	    }
+
 	}
 
 }

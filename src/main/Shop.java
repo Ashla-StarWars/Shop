@@ -7,7 +7,6 @@ import model.Product;
 import model.ProductList;
 import model.Sale;
 import utils.Constants;
-
 import java.io.File;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import dao.Dao;
 import dao.DaoImplFile;
 import dao.DaoImplJDBC;
@@ -29,7 +27,7 @@ public class Shop {
 	public static ProductList inventory;
 	private ArrayList<Sale> sales;
 	private Employee employee;
-	public Dao dao;
+	public static Dao dao;
 
 	final static double TAX_RATE = 1.04;
 
@@ -53,7 +51,7 @@ public class Shop {
 	public static void main(String[] args) {
 
 		Shop shop = new Shop();
-		inventory = shop.dao.getInventory();
+		inventory = Shop.dao.getInventory();
 		shop.initSession();
 
 		Scanner scanner = new Scanner(System.in);
@@ -91,7 +89,7 @@ public class Shop {
 			switch (opcion) {
 
 			case 0:
-				if (shop.dao.writeInventory(inventory)) {
+				if (Shop.dao.writeInventory(inventory)) {
 					System.out.println("Inventario exportando correctamente");
 				} else {
 					System.out.println("Error exportando el inventario");
@@ -170,14 +168,14 @@ public class Shop {
 	/**
 	 * show current total cash
 	 */
-	public void showCash() {
+	private void showCash() {
 		System.out.println("Dinero actual: " + cash.getValue() + " " + cash.getCurrency());
 	}
 
 	/**
 	 * add a new product to inventory getting data from console
 	 */
-	public void addProduct() {
+	private void addProduct() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Nombre: ");
 		String name = scanner.nextLine();
@@ -187,7 +185,11 @@ public class Shop {
 			Amount wholesalerPrice = new Amount(scanner.nextDouble(), Constants.AMOUNT_SYMBOL);
 			System.out.print("Stock: ");
 			int stock = scanner.nextInt();
-			inventory.add(new Product(name, wholesalerPrice, true, stock));
+			
+			Product newProduct = new Product(name, wholesalerPrice, true, stock);
+			Shop.dao.addProduct(newProduct);
+			inventory.add(newProduct);
+			
 			System.out.println("Producto añadido correctamente");
 		} else {
 			System.out.println("El producto con nombre " + name + " ya existe en el inventario");
@@ -205,6 +207,7 @@ public class Shop {
 
 		if (product != null) {
 			inventory.remove(product);
+			Shop.dao.deleteProduct(product);
 			System.out.println("El producto con nombre " + name + " se ha eliminado");
 		} else {
 			System.out.println("No se ha encontrado el producto con nombre " + name);
@@ -226,6 +229,7 @@ public class Shop {
 			int stock = scanner.nextInt();
 			// update stock product
 			product.setStock(product.getStock() + stock);
+			Shop.dao.updateProduct(product);
 			System.out.println("El stock del producto " + name + " ha sido actualizado a " + product.getStock());
 
 		} else {

@@ -51,7 +51,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 	public ShopView() {
 
 		shop = new Shop();
-		Shop.inventory = shop.dao.getInventory();
+		Shop.inventory = Shop.dao.getInventory();
 
 		setTitle("MiTienda.com - Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -219,7 +219,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 	}
 
 	public void writeInventory(Shop shop) {
-		if (shop.dao.writeInventory(Shop.inventory)) {
+		if (Shop.dao.writeInventory(Shop.inventory)) {
 			JOptionPane.showMessageDialog(null, "Inventario exportado correctamente", "Información",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else {

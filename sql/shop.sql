@@ -10,10 +10,20 @@ CREATE TABLE employee (
 
 CREATE TABLE inventory (
 	id INT PRIMARY KEY,
-    name VARCHAR(255),
-    wholesalerPrice DECIMAL(10,2),
-    available boolean,
-    stock INT
+    name VARCHAR(255) NOT NULL,
+    wholesalerPrice DECIMAL(10,2) NOT NULL,
+    available boolean NOT NULL,
+    stock INT NOT NULL
+);
+
+CREATE TABLE historical_inventory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_product INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    wholesalerPrice DECIMAL(10, 2) NOT NULL,
+    available INT NOT NULL,
+    stock INT NOT NULL,
+    created_at DATETIME NOT NULL
 );
 
 
@@ -39,3 +49,4 @@ INSERT INTO inventory (id, name, wholesalerPrice, available, stock) VALUES
 
 SELECT * FROM EMPLOYEE;
 SELECT * FROM inventory;
+SELECT * FROM historical_inventory;
