@@ -41,8 +41,8 @@ public class Shop {
 
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
-		//dao = new DaoImplJaxb();
-		dao = new DaoImplJDBC();
+		dao = new DaoImplJaxb();
+		//dao = new DaoImplJDBC();
 	}
 
 	/**
