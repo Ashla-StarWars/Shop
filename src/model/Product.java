@@ -104,7 +104,6 @@ public class Product {
 		this.stock = stock;
 		if(this.stock>0) {
 			this.available = true;
-			System.out.println(this.stock);
 		}
 	}
 
