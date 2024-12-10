@@ -1,6 +1,7 @@
 package dao;
 
 import model.Employee;
+import model.Product;
 import model.ProductList;
 
 import java.sql.Connection;
@@ -79,14 +80,54 @@ public class DaoImplJDBC implements Dao {
 
 	@Override
 	public ProductList getInventory() {
-		// TODO Auto-generated method stub
-		return null;
+		connect();
+		ProductList inventory = new ProductList();
+		// Prepare query
+		String query = "SELECT * FROM inventory";
+
+		try (PreparedStatement ps = connection.prepareStatement(query)) {
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					
+					Product item = new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("wholesalerPrice"), rs.getBoolean("available"), rs.getInt("stock"));
+					System.out.println(item.toString());
+					inventory.add(item);
+				} 
+			} catch (SQLException e) {
+				// In case of an SQL error
+				e.printStackTrace();
+			}
+		} catch (SQLException e) {
+			// In case of an SQL error
+			e.printStackTrace();
+		}
+		disconnect();
+		return inventory;
+		
 	}
 
 	@Override
 	public boolean writeInventory(ProductList lista) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void addProduct(Product item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateProduct(Product item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteProduct(Product item) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -11,6 +11,7 @@ import org.xml.sax.SAXException;
 import exception.EmployeeNotFoundException;
 import exception.InvalidPasswordException;
 import model.Employee;
+import model.Product;
 import model.ProductList;
 import dao.xml.SaxReader;
 import dao.xml.DomWriter;
@@ -71,6 +72,24 @@ public class DaoImplXml implements Dao {
 		DomWriter domWriter = new DomWriter();
 		generated = domWriter.generateDocument(inventory);
 		return generated;
+	}
+
+	@Override
+	public void addProduct(Product item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateProduct(Product item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteProduct(Product item) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

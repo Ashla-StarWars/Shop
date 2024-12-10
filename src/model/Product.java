@@ -38,6 +38,17 @@ public class Product {
 		totalProducts++;
 	}
 
+	public Product(int id, String name, double price, boolean available, int stock) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.wholesalerPrice = new Amount(price, Constants.AMOUNT_SYMBOL);
+		this.publicPrice = new Amount(price * 2, Constants.AMOUNT_SYMBOL);
+		this.available = available;
+		this.stock = stock;
+		totalProducts++;
+	}
+
 	@XmlAttribute(name = "id")
 	public int getId() {
 		return id;

@@ -3,6 +3,7 @@ package dao;
 import exception.EmployeeNotFoundException;
 import exception.InvalidPasswordException;
 import model.Employee;
+import model.Product;
 import model.ProductList;
 
 public interface Dao {
@@ -17,5 +18,11 @@ public interface Dao {
 	public ProductList getInventory();
 
 	public boolean writeInventory(ProductList lista);
+	
+	public void addProduct(Product item);
+	
+	public void updateProduct(Product item);
+	
+	public void deleteProduct(Product item);
 
 }

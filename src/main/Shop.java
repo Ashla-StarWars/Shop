@@ -19,6 +19,7 @@ import java.util.Scanner;
 
 import dao.Dao;
 import dao.DaoImplFile;
+import dao.DaoImplJDBC;
 import dao.DaoImplJaxb;
 import dao.DaoImplXml;
 
@@ -40,7 +41,8 @@ public class Shop {
 
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
-		dao = new DaoImplJaxb();
+		//dao = new DaoImplJaxb();
+		dao = new DaoImplJDBC();
 	}
 
 	/**
