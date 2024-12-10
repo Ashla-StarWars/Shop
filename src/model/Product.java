@@ -23,7 +23,6 @@ public class Product {
 
 	public Product() {
 		this.id = totalProducts + 1;
-		this.available = true;
 		totalProducts++;
 	}
 
@@ -103,6 +102,10 @@ public class Product {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+		if(this.stock>0) {
+			this.available = true;
+			System.out.println(this.stock);
+		}
 	}
 
 	public void expire() {
