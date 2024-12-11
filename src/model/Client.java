@@ -9,7 +9,7 @@ public class Client extends Person implements Payable {
 	Amount balance;
 
 	final int MEMBER_ID = 465;
-	final Amount BALANCE = new Amount(50.00, Constants.AMOUNT_SYMBOL);
+	final Amount BALANCE = new Amount(50.00, Constants.AMOUNT.SYMBOL.EUR);
 
 	public Client(String name) {
 		super(name);

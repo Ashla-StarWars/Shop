@@ -24,23 +24,22 @@ import dao.DaoImplXml;
 public class Shop {
 
 	public Amount cash;
+	public Dao dao;
 	public static ProductList inventory;
 	private ArrayList<Sale> sales;
 	private Employee employee;
-	public static Dao dao;
-
-	final static double TAX_RATE = 1.04;
 
 	public Shop() {
 		inventory = new ProductList();
 		sales = new ArrayList<Sale>();
-		cash = new Amount(10.5, Constants.AMOUNT_SYMBOL);
+		cash = new Amount(10.5, Constants.AMOUNT.SYMBOL.EUR);
 		employee = new Employee(null, 0, null);
-
+		
+		dao = new DaoImplJDBC();
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
 		// dao = new DaoImplJaxb();
-		dao = new DaoImplJDBC();
+
 	}
 
 	/**
@@ -51,7 +50,7 @@ public class Shop {
 	public static void main(String[] args) {
 
 		Shop shop = new Shop();
-		inventory = Shop.dao.getInventory();
+		inventory = shop.dao.getInventory();
 		shop.initSession();
 
 		Scanner scanner = new Scanner(System.in);
@@ -89,7 +88,7 @@ public class Shop {
 			switch (opcion) {
 
 			case 0:
-				if (Shop.dao.writeInventory(inventory)) {
+				if (shop.dao.writeInventory(inventory)) {
 					System.out.println("Inventario exportando correctamente");
 				} else {
 					System.out.println("Error exportando el inventario");
@@ -101,11 +100,11 @@ public class Shop {
 				break;
 
 			case 2:
-				shop.addProduct();
+				shop.addProduct(shop);
 				break;
 
 			case 3:
-				shop.addStock();
+				shop.addStock(shop);
 				break;
 
 			case 4:
@@ -129,7 +128,7 @@ public class Shop {
 				break;
 
 			case 9:
-				shop.deleteProduct();
+				shop.deleteProduct(shop);
 				break;
 
 			case 10:
@@ -175,19 +174,19 @@ public class Shop {
 	/**
 	 * add a new product to inventory getting data from console
 	 */
-	private void addProduct() {
+	private void addProduct(Shop shop) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Nombre: ");
 		String name = scanner.nextLine();
 		Product product = findProduct(name);
 		if (product == null) {
 			System.out.print("Precio mayorista: ");
-			Amount wholesalerPrice = new Amount(scanner.nextDouble(), Constants.AMOUNT_SYMBOL);
+			Amount wholesalerPrice = new Amount(scanner.nextDouble(), Constants.AMOUNT.SYMBOL.EUR);
 			System.out.print("Stock: ");
 			int stock = scanner.nextInt();
 			
 			Product newProduct = new Product(name, wholesalerPrice, true, stock);
-			Shop.dao.addProduct(newProduct);
+			shop.dao.addProduct(newProduct);
 			inventory.add(newProduct);
 			
 			System.out.println("Producto añadido correctamente");
@@ -199,7 +198,7 @@ public class Shop {
 	/**
 	 * delete a product to inventory getting data from console
 	 */
-	private void deleteProduct() {
+	private void deleteProduct(Shop shop) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Seleccione un nombre de producto a eliminar: ");
 		String name = scanner.next();
@@ -207,7 +206,7 @@ public class Shop {
 
 		if (product != null) {
 			inventory.remove(product);
-			Shop.dao.deleteProduct(product);
+			shop.dao.deleteProduct(product);
 			System.out.println("El producto con nombre " + name + " se ha eliminado");
 		} else {
 			System.out.println("No se ha encontrado el producto con nombre " + name);
@@ -217,7 +216,7 @@ public class Shop {
 	/**
 	 * add stock for a specific product
 	 */
-	private void addStock() {
+	private void addStock(Shop shop) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Seleccione un nombre de producto: ");
 		String name = scanner.next();
@@ -229,7 +228,7 @@ public class Shop {
 			int stock = scanner.nextInt();
 			// update stock product
 			product.setStock(product.getStock() + stock);
-			Shop.dao.updateProduct(product);
+			shop.dao.updateProduct(product);
 			System.out.println("El stock del producto " + name + " ha sido actualizado a " + product.getStock());
 
 		} else {
@@ -321,8 +320,8 @@ public class Shop {
 		String formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(myDate);
 
 		// show cost total
-		totalAmount = totalAmount * TAX_RATE;
-		total = new Amount(totalAmount, Constants.AMOUNT_SYMBOL);
+		totalAmount = totalAmount * Constants.TAX.RATE;
+		total = new Amount(totalAmount, Constants.AMOUNT.SYMBOL.EUR);
 
 		paid = client.pay(total);
 

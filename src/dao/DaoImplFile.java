@@ -62,7 +62,7 @@ public class DaoImplFile implements Dao {
 					String[] productPrice = parts[1].split(":");
 					String[] productStock = parts[2].split(":");
 					inventory.add(new Product(productName[1],
-							new Amount(Double.parseDouble(productPrice[1]), Constants.AMOUNT_SYMBOL), true,
+							new Amount(Double.parseDouble(productPrice[1]), Constants.AMOUNT.SYMBOL.EUR), true,
 							Integer.parseInt(productStock[1])));
 
 					linea = br.readLine();
@@ -111,19 +111,19 @@ public class DaoImplFile implements Dao {
 	@Override
 	public void addProduct(Product item) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void updateProduct(Product item) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteProduct(Product item) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

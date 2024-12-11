@@ -17,7 +17,7 @@ public class Sale {
 		this.client = client;
 		this.products = products;
 		this.date = date;
-		this.amount = new Amount(amount, Constants.AMOUNT_SYMBOL);
+		this.amount = new Amount(amount, Constants.AMOUNT.SYMBOL.EUR);
 	}
 
 	public Client getClient() {

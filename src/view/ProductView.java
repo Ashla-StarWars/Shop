@@ -25,7 +25,7 @@ public class ProductView extends JDialog implements ActionListener {
 	private JTextField productStock;
 	private JTextField productPrice;
 
-		/**
+	/**
 	 * Create the dialog.
 	 * 
 	 * @param option
@@ -54,13 +54,13 @@ public class ProductView extends JDialog implements ActionListener {
 					product = shop.findProduct(name);
 					if (product == null) {
 						Amount wholesalerPrice = new Amount(Double.parseDouble(productPrice.getText()),
-								Constants.AMOUNT_SYMBOL);
+								Constants.AMOUNT.SYMBOL.EUR);
 						stock = Integer.parseInt(productStock.getText());
-						
+
 						Product newProduct = new Product(name, wholesalerPrice, true, stock);
 						Shop.inventory.add(newProduct);
-						Shop.dao.addProduct(newProduct);
-						
+						shop.dao.addProduct(newProduct);
+
 						JOptionPane.showMessageDialog(null, "Producto añadido correctamente", "Información",
 								JOptionPane.INFORMATION_MESSAGE);
 
@@ -81,7 +81,7 @@ public class ProductView extends JDialog implements ActionListener {
 
 						stock = Integer.parseInt(productStock.getText());
 						product.setStock(product.getStock() + stock);
-						Shop.dao.updateProduct(product);
+						shop.dao.updateProduct(product);
 						JOptionPane.showMessageDialog(null,
 								"El stock del producto " + name + " ha sido actualizado a " + product.getStock(),
 								"Información", JOptionPane.INFORMATION_MESSAGE);
@@ -101,7 +101,7 @@ public class ProductView extends JDialog implements ActionListener {
 
 					if (product != null) {
 						Shop.inventory.remove(product);
-						Shop.dao.deleteProduct(product);
+						shop.dao.deleteProduct(product);
 						JOptionPane.showMessageDialog(null, "El producto con nombre " + name + " se ha eliminado",
 								"Información", JOptionPane.INFORMATION_MESSAGE);
 

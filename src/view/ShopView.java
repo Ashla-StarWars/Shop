@@ -51,7 +51,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 	public ShopView() {
 
 		shop = new Shop();
-		Shop.inventory = Shop.dao.getInventory();
+		Shop.inventory = shop.dao.getInventory();
 
 		setTitle("MiTienda.com - Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +96,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 		JButton option_2_Boton = new JButton("2. Añadir producto");
 		option_2_Boton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openProductView(shop, Constants.OPTION_ADD_PRODUCT);
+				openProductView(shop, Constants.OPTION.ADD_PRODUCT);
 			}
 		});
 		option_2_Boton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -109,7 +109,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 		JButton option_3_Boton = new JButton("3. Añadir stock");
 		option_3_Boton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openProductView(shop, Constants.OPTION_ADD_STOCK);
+				openProductView(shop, Constants.OPTION.ADD_STOCK);
 
 			}
 		});
@@ -136,7 +136,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 		JButton option_9_Boton = new JButton("9. Eliminar producto");
 		option_9_Boton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openProductView(shop, Constants.OPTION_DELETE_PRODUCT);
+				openProductView(shop, Constants.OPTION.DELETE_PRODUCT);
 			}
 		});
 		option_9_Boton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -169,11 +169,11 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 			break;
 
 		case '2':
-			openProductView(shop, Constants.OPTION_ADD_PRODUCT);
+			openProductView(shop, Constants.OPTION.ADD_PRODUCT);
 			break;
 
 		case '3':
-			openProductView(shop, Constants.OPTION_ADD_STOCK);
+			openProductView(shop, Constants.OPTION.ADD_STOCK);
 			break;
 
 		case '5':
@@ -181,7 +181,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 			break;
 
 		case '9':
-			openProductView(shop, Constants.OPTION_DELETE_PRODUCT);
+			openProductView(shop, Constants.OPTION.DELETE_PRODUCT);
 			break;
 
 		default:
@@ -219,7 +219,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 	}
 
 	public void writeInventory(Shop shop) {
-		if (Shop.dao.writeInventory(Shop.inventory)) {
+		if (shop.dao.writeInventory(Shop.inventory)) {
 			JOptionPane.showMessageDialog(null, "Inventario exportado correctamente", "Información",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else {

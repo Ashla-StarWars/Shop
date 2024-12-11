@@ -12,8 +12,8 @@ import utils.Constants;
 public class Product {
 	private int id;
 	private String name;
-	private Amount publicPrice = new Amount(0.0, Constants.AMOUNT_SYMBOL);
-	private Amount wholesalerPrice = new Amount(0.0, Constants.AMOUNT_SYMBOL);
+	private Amount publicPrice = new Amount(0.0, Constants.AMOUNT.SYMBOL.EUR);
+	private Amount wholesalerPrice = new Amount(0.0, Constants.AMOUNT.SYMBOL.EUR);
 	private boolean available;
 	private int stock;
 
@@ -41,8 +41,8 @@ public class Product {
 		super();
 		this.id = id;
 		this.name = name;
-		this.wholesalerPrice = new Amount(price, Constants.AMOUNT_SYMBOL);
-		this.publicPrice = new Amount(price * 2, Constants.AMOUNT_SYMBOL);
+		this.wholesalerPrice = new Amount(price, Constants.AMOUNT.SYMBOL.EUR);
+		this.publicPrice = new Amount(price * 2, Constants.AMOUNT.SYMBOL.EUR);
 		this.available = available;
 		this.stock = stock;
 		totalProducts++;
@@ -102,7 +102,7 @@ public class Product {
 
 	public void setStock(int stock) {
 		this.stock = stock;
-		if(this.stock>0) {
+		if (this.stock > 0) {
 			this.available = true;
 		}
 	}
