@@ -93,48 +93,37 @@ public class Shop {
 			case 0:
 				shop.writeInventory();
 				break;
-
 			case 1:
 				shop.showCash();
 				break;
-
 			case 2:
 				shop.addProduct();
 				break;
-
 			case 3:
-				shop.addStock(shop);
+				shop.addStock();
 				break;
-
 			case 4:
 				shop.setExpired();
 				break;
-
 			case 5:
 				shop.showInventory();
 				break;
-
 			case 6:
 				shop.sale();
 				break;
-
 			case 7:
 				shop.showSales();
 				break;
-
 			case 8:
 				shop.showValueSales();
 				break;
-
 			case 9:
-				shop.deleteProduct(shop);
+				shop.deleteProduct();
 				break;
-
 			case 10:
 				System.out.println("Se ha cerrado correctamente");
 				exit = true;
 				break;
-
 			case 11:
 				shop.showClientSales();
 				break;
@@ -210,7 +199,7 @@ public class Shop {
 	/**
 	 * delete a product to inventory getting data from console
 	 */
-	private void deleteProduct(Shop shop) {
+	private void deleteProduct() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Seleccione un nombre de producto a eliminar: ");
 		String name = scanner.next();
@@ -218,7 +207,7 @@ public class Shop {
 
 		if (product != null) {
 			inventory.remove(product);
-			shop.dao.deleteProduct(product);
+			dao.deleteProduct(product);
 			System.out.println("El producto con nombre " + name + " se ha eliminado");
 		} else {
 			System.out.println("No se ha encontrado el producto con nombre " + name);
@@ -228,7 +217,7 @@ public class Shop {
 	/**
 	 * add stock for a specific product
 	 */
-	private void addStock(Shop shop) {
+	private void addStock() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Seleccione un nombre de producto: ");
 		String name = scanner.next();
@@ -240,7 +229,7 @@ public class Shop {
 			int stock = scanner.nextInt();
 			// update stock product
 			product.setStock(product.getStock() + stock);
-			shop.dao.updateProduct(product);
+			dao.updateProduct(product);
 			System.out.println("El stock del producto " + name + " ha sido actualizado a " + product.getStock());
 
 		} else {
