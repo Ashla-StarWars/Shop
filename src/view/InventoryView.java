@@ -29,9 +29,9 @@ public class InventoryView extends JDialog {
 		getContentPane().setLayout(new BorderLayout());
 
 		// Crear una matriz de objetos para los datos de la tabla
-		Object[][] data = new Object[Shop.inventory.getTotal()][6];
-		for (int i = 0; i < Shop.inventory.getTotal(); i++) {
-			Product product = Shop.inventory.get(i);
+		Object[][] data = new Object[shop.inventory.getTotal()][6];
+		for (int i = 0; i < shop.inventory.getTotal(); i++) {
+			Product product = shop.inventory.get(i);
 			data[i][0] = product.getId();
 			data[i][1] = product.getName();
 			data[i][2] = product.getPublicPrice();

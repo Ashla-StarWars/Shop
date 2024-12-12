@@ -58,7 +58,7 @@ public class ProductView extends JDialog implements ActionListener {
 						stock = Integer.parseInt(productStock.getText());
 
 						Product newProduct = new Product(name, wholesalerPrice, true, stock);
-						Shop.inventory.add(newProduct);
+						shop.inventory.add(newProduct);
 						shop.dao.addProduct(newProduct);
 
 						JOptionPane.showMessageDialog(null, "Producto añadido correctamente", "Información",
@@ -100,7 +100,7 @@ public class ProductView extends JDialog implements ActionListener {
 					product = shop.findProduct(name);
 
 					if (product != null) {
-						Shop.inventory.remove(product);
+						shop.inventory.remove(product);
 						shop.dao.deleteProduct(product);
 						JOptionPane.showMessageDialog(null, "El producto con nombre " + name + " se ha eliminado",
 								"Información", JOptionPane.INFORMATION_MESSAGE);

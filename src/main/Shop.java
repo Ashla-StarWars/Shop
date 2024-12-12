@@ -25,12 +25,13 @@ public class Shop {
 
 	public Amount cash;
 	public Dao dao;
-	public static ProductList inventory;
+	public ProductList inventory;
 	private ArrayList<Sale> sales;
 	private Employee employee;
 
 	public Shop() {
 		inventory = new ProductList();
+		
 		sales = new ArrayList<Sale>();
 		cash = new Amount(10.5, Constants.AMOUNT.SYMBOL.EUR);
 		employee = new Employee(null, 0, null);
@@ -39,6 +40,8 @@ public class Shop {
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
 		// dao = new DaoImplJaxb();
+		
+		this.inventory = dao.getInventory();
 
 	}
 
@@ -50,7 +53,7 @@ public class Shop {
 	public static void main(String[] args) {
 
 		Shop shop = new Shop();
-		inventory = shop.dao.getInventory();
+		
 		shop.initSession();
 
 		Scanner scanner = new Scanner(System.in);
@@ -88,11 +91,7 @@ public class Shop {
 			switch (opcion) {
 
 			case 0:
-				if (shop.dao.writeInventory(inventory)) {
-					System.out.println("Inventario exportando correctamente");
-				} else {
-					System.out.println("Error exportando el inventario");
-				}
+				shop.writeInventory();
 				break;
 
 			case 1:
@@ -100,7 +99,7 @@ public class Shop {
 				break;
 
 			case 2:
-				shop.addProduct(shop);
+				shop.addProduct();
 				break;
 
 			case 3:
@@ -147,6 +146,8 @@ public class Shop {
 		} while (!exit);
 	}
 
+
+
 	/**
 	 * initSession
 	 * 
@@ -163,6 +164,17 @@ public class Shop {
 			logged = employee.login(user, passw);
 		} while (!logged);
 	}
+	
+	/*
+	 *  export inventory
+	 */
+	private void writeInventory() {
+		if (dao.writeInventory(inventory)) {
+			System.out.println("Inventario exportando correctamente");
+		} else {
+			System.out.println("Error exportando el inventario");
+		}
+	}
 
 	/**
 	 * show current total cash
@@ -174,7 +186,7 @@ public class Shop {
 	/**
 	 * add a new product to inventory getting data from console
 	 */
-	private void addProduct(Shop shop) {
+	private void addProduct() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Nombre: ");
 		String name = scanner.nextLine();
@@ -186,8 +198,8 @@ public class Shop {
 			int stock = scanner.nextInt();
 			
 			Product newProduct = new Product(name, wholesalerPrice, true, stock);
-			shop.dao.addProduct(newProduct);
 			inventory.add(newProduct);
+			dao.addProduct(newProduct);
 			
 			System.out.println("Producto añadido correctamente");
 		} else {
