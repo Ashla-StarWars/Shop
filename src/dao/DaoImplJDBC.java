@@ -83,9 +83,10 @@ public class DaoImplJDBC implements Dao {
 
 	@Override
 	public ProductList getInventory() {
-		connect();
+
 		ProductList inventory = new ProductList();
 		String query = "SELECT * FROM inventory";
+		connect();
 		try (PreparedStatement ps = connection.prepareStatement(query)) {
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
@@ -104,7 +105,7 @@ public class DaoImplJDBC implements Dao {
 
 	@Override
 	public boolean writeInventory(ProductList lista) {
-		connect();
+
 		boolean isExported = false;
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -122,6 +123,7 @@ public class DaoImplJDBC implements Dao {
 		for (Product product : lista.getProducts()) {
 
 			String query = "INSERT INTO historical_inventory (id_product, name, wholesalerPrice, available, stock, created_at) VALUES (?, ?, ?, ?, ?, ?)";
+			connect();
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
 				statement.setInt(1, product.getId());
 				statement.setString(2, product.getName());
@@ -142,9 +144,9 @@ public class DaoImplJDBC implements Dao {
 
 	@Override
 	public void addProduct(Product product) {
-		connect();
-		String query = "INSERT INTO inventory (id, name, wholesalerPrice, available, stock) VALUES (?, ?, ?, ?, ?);";
 
+		String query = "INSERT INTO inventory (id, name, wholesalerPrice, available, stock) VALUES (?, ?, ?, ?, ?);";
+		connect();
 		try (PreparedStatement statement = connection.prepareStatement(query)) {
 			statement.setInt(1, product.getId());
 			statement.setString(2, product.getName());
@@ -162,12 +164,19 @@ public class DaoImplJDBC implements Dao {
 
 	@Override
 	public void updateProduct(Product product) {
+		
+		boolean isAvailable = false;
+		if(product.getStock()>0) {
+			isAvailable = true;
+		}
+		
+	    String query = "UPDATE inventory SET stock = ? , available = ? WHERE id = ?;";
+	    
 		connect();
-	    String query = "UPDATE inventory SET stock = ? WHERE id = ?;";
-
 	    try (PreparedStatement statement = connection.prepareStatement(query)) {
 	        statement.setInt(1, product.getStock());
-	        statement.setInt(2, product.getId());
+	        statement.setBoolean(2, isAvailable);
+	        statement.setInt(3, product.getId());
 
 	        int rowsAffected = statement.executeUpdate();
 	        if (rowsAffected > 0) {

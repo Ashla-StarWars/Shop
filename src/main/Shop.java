@@ -36,10 +36,10 @@ public class Shop {
 		cash = new Amount(10.5, Constants.AMOUNT.SYMBOL.EUR);
 		employee = new Employee(null, 0, null);
 		
-		//dao = new DaoImplJDBC();
+		dao = new DaoImplJDBC();
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
-		 dao = new DaoImplJaxb();
+		// dao = new DaoImplJaxb();
 		
 		this.inventory = dao.getInventory();
 
