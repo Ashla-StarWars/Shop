@@ -36,10 +36,10 @@ public class Shop {
 		cash = new Amount(10.5, Constants.AMOUNT.SYMBOL.EUR);
 		employee = new Employee(null, 0, null);
 		
-		dao = new DaoImplJDBC();
+		//dao = new DaoImplJDBC();
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
-		// dao = new DaoImplJaxb();
+		 dao = new DaoImplJaxb();
 		
 		this.inventory = dao.getInventory();
 
@@ -185,8 +185,11 @@ public class Shop {
 			Amount wholesalerPrice = new Amount(scanner.nextDouble(), Constants.AMOUNT.SYMBOL.EUR);
 			System.out.print("Stock: ");
 			int stock = scanner.nextInt();
-			
-			Product newProduct = new Product(name, wholesalerPrice, true, stock);
+			boolean isAvailable = false;
+			if(stock >0) {
+				isAvailable = true;
+			}
+			Product newProduct = new Product(name, wholesalerPrice, isAvailable, stock);
 			inventory.add(newProduct);
 			dao.addProduct(newProduct);
 			

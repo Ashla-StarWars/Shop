@@ -114,7 +114,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return this.id + " " + this.name + ", publicPrice = " + this.publicPrice.toString() + ", wholesalerPrice = "
-				+ this.wholesalerPrice.toString() + ", stock = " + this.stock;
+				+ this.wholesalerPrice.toString() + ", stock = " + this.stock + ", available = " + this.isAvailable();
 	}
 
 	public String toList() {
