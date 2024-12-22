@@ -18,11 +18,11 @@ public interface Dao {
 	public ProductList getInventory();
 
 	public boolean writeInventory(ProductList lista);
-	
+
 	public void addProduct(Product item);
-	
+
 	public void updateProduct(Product item);
-	
+
 	public void deleteProduct(Product item);
 
 }

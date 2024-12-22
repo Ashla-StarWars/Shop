@@ -56,9 +56,9 @@ public class ProductView extends JDialog implements ActionListener {
 						Amount wholesalerPrice = new Amount(Double.parseDouble(productPrice.getText()),
 								Constants.AMOUNT.SYMBOL.EUR);
 						stock = Integer.parseInt(productStock.getText());
-						
+
 						boolean isAvailable = false;
-						if(stock>0) {
+						if (stock > 0) {
 							isAvailable = true;
 						}
 

@@ -31,16 +31,16 @@ public class Shop {
 
 	public Shop() {
 		inventory = new ProductList();
-		
+
 		sales = new ArrayList<Sale>();
 		cash = new Amount(10.5, Constants.AMOUNT.SYMBOL.EUR);
 		employee = new Employee(null, 0, null);
-		
+
 		dao = new DaoImplJDBC();
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
 		// dao = new DaoImplJaxb();
-		
+
 		this.inventory = dao.getInventory();
 
 	}
@@ -53,7 +53,7 @@ public class Shop {
 	public static void main(String[] args) {
 
 		Shop shop = new Shop();
-		
+
 		shop.initSession();
 
 		Scanner scanner = new Scanner(System.in);
@@ -135,8 +135,6 @@ public class Shop {
 		} while (!exit);
 	}
 
-
-
 	/**
 	 * initSession
 	 * 
@@ -153,9 +151,9 @@ public class Shop {
 			logged = employee.login(user, passw);
 		} while (!logged);
 	}
-	
+
 	/*
-	 *  export inventory
+	 * export inventory
 	 */
 	private void writeInventory() {
 		if (dao.writeInventory(inventory)) {
@@ -186,13 +184,14 @@ public class Shop {
 			System.out.print("Stock: ");
 			int stock = scanner.nextInt();
 			boolean isAvailable = false;
-			if(stock >0) {
+			if (stock > 0) {
 				isAvailable = true;
 			}
 			Product newProduct = new Product(name, wholesalerPrice, isAvailable, stock);
+			System.out.println(newProduct.getId());
 			inventory.add(newProduct);
 			dao.addProduct(newProduct);
-			
+
 			System.out.println("Producto añadido correctamente");
 		} else {
 			System.out.println("El producto con nombre " + name + " ya existe en el inventario");
