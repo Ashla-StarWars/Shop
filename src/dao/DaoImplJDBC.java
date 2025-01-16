@@ -93,6 +93,7 @@ public class DaoImplJDBC implements Dao {
 					Product item = new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("wholesalerPrice"),
 							rs.getBoolean("available"), rs.getInt("stock"));
 					inventory.add(item);
+					System.out.println(Product.totalProducts);
 				}
 			}
 		} catch (SQLException e) {
@@ -161,30 +162,29 @@ public class DaoImplJDBC implements Dao {
 	@Override
 	public void updateProduct(Product product) {
 
-		boolean isAvailable = false;
-		if (product.getStock() > 0) {
-			isAvailable = true;
-		}
+		String query = "UPDATE inventory SET name = ?, wholesalerPrice = ?, stock = ?, available = ? WHERE id = ?;";
 
-		String query = "UPDATE inventory SET stock = ? , available = ? WHERE id = ?;";
+	    boolean isAvailable = product.getStock() > 0;
 
-		connect();
-		try (PreparedStatement statement = connection.prepareStatement(query)) {
-			statement.setInt(1, product.getStock());
-			statement.setBoolean(2, isAvailable);
-			statement.setInt(3, product.getId());
+	    connect();
+	    try (PreparedStatement statement = connection.prepareStatement(query)) {
+	        statement.setString(1, product.getName());
+	        statement.setDouble(2, product.getWholesalerPrice().getValue());
+	        statement.setInt(3, product.getStock());
+	        statement.setBoolean(4, isAvailable);
+	        statement.setInt(5, product.getId());
 
-			int rowsAffected = statement.executeUpdate();
-			if (rowsAffected > 0) {
-				System.out.println("Stock actualizado correctamente: " + product.getName());
-			} else {
-				System.out.println("No se encontró el producto: " + product.getName());
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
+	        int rowsAffected = statement.executeUpdate();
+	        if (rowsAffected > 0) {
+	            System.out.println("Producto actualizado correctamente: " + product.getName());
+	        } else {
+	            System.out.println("No se encontró el producto: " + product.getName());
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        disconnect();
+	    }
 
 	}
 

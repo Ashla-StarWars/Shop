@@ -17,7 +17,7 @@ public class Product {
 	private boolean available;
 	private int stock;
 
-	private static int totalProducts;
+	public static int totalProducts;
 
 	static double EXPIRATION_RATE = 0.60;
 

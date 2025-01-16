@@ -51,7 +51,6 @@ public class ShopView extends JFrame implements ActionListener, KeyListener {
 	public ShopView() {
 
 		shop = new Shop();
-		shop.inventory = shop.dao.getInventory();
 
 		setTitle("MiTienda.com - Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
