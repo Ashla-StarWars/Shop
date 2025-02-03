@@ -9,7 +9,7 @@ CREATE TABLE employee (
 );
 
 CREATE TABLE inventory (
-	id INT PRIMARY KEY,
+	id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     wholesalerPrice DECIMAL(10,2) NOT NULL,
     available boolean NOT NULL,
@@ -49,4 +49,9 @@ INSERT INTO inventory (id, name, wholesalerPrice, available, stock) VALUES
 
 SELECT * FROM EMPLOYEE;
 SELECT * FROM inventory;
+
 SELECT * FROM historical_inventory;
+DESCRIBE inventory;
+
+SELECT * FROM product;
+SELECT * FROM productlist;

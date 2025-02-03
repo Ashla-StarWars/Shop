@@ -93,7 +93,7 @@ public class DaoImplJDBC implements Dao {
 					Product item = new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("wholesalerPrice"),
 							rs.getBoolean("available"), rs.getInt("stock"));
 					inventory.add(item);
-					System.out.println(Product.totalProducts);
+					//System.out.println(Product.totalProducts);
 				}
 			}
 		} catch (SQLException e) {

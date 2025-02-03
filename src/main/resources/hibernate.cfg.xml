@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration>
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Dialecto de MySQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+    
+        <!-- Configuración de la conexión a la base de datos -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/shop</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property> <!-- Agrega la contraseña aquí -->
+    
+        <!-- Configuraciones adicionales -->
+        <property name="hibernate.show_sql">true</property>  <!-- Muestra las consultas en la consola -->
+        <property name="hibernate.format_sql">true</property> <!-- Formatea las consultas para mayor legibilidad -->
+        <property name="hibernate.hbm2ddl.auto">update</property> <!-- Actualiza el esquema de la base de datos -->
+    
+        <!-- Pool de conexiones (opcional) -->
+        <property name="hibernate.connection.pool_size">10</property>
+    
+        <!-- Timezone para MySQL (opcional si da problemas de zona horaria) -->
+        <property name="hibernate.jdbc.time_zone">UTC</property>
+    
+        <!-- Mapping de las clases -->
+        <mapping class="model.Product"/>
+        <mapping class="model.ProductHistory"/>
+    
+    </session-factory>
+</hibernate-configuration>

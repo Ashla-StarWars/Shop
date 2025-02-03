@@ -1,10 +1,18 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlValue;
 
+@Embeddable
 public class Amount {
+	@Transient
+	@Column(insertable = false, updatable = false)
 	private double value;
+	@Transient
+	@Column(insertable = false, updatable = false)
 	private String currency;
 
 	public Amount() {
