@@ -1,7 +1,8 @@
 package model;
 
 import java.util.ArrayList;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,8 +12,7 @@ public class ProductList {
 
 	private ArrayList<Product> products = new ArrayList<>();
 
-	public ProductList() {
-	};
+	public ProductList() {};
 
 	public ProductList(ArrayList<Product> products) {
 		this.products = products;

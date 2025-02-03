@@ -15,8 +15,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import dao.Dao;
 import dao.DaoImplFile;
+import dao.DaoImplHibernate;
 import dao.DaoImplJDBC;
 import dao.DaoImplJaxb;
 import dao.DaoImplXml;
@@ -36,10 +42,11 @@ public class Shop {
 		cash = new Amount(10.5, Constants.AMOUNT.SYMBOL.EUR);
 		employee = new Employee(null, 0, null);
 
-		dao = new DaoImplJDBC();
+		// dao = new DaoImplJDBC();
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
 		// dao = new DaoImplJaxb();
+		dao = new DaoImplHibernate();
 
 		this.inventory = dao.getInventory();
 
@@ -51,7 +58,7 @@ public class Shop {
 	 * @throws SQLException
 	 */
 	public static void main(String[] args) {
-
+		
 		Shop shop = new Shop();
 
 		shop.initSession();
