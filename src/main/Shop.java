@@ -25,6 +25,7 @@ import dao.DaoImplFile;
 import dao.DaoImplHibernate;
 import dao.DaoImplJDBC;
 import dao.DaoImplJaxb;
+import dao.DaoImplMongoDB;
 import dao.DaoImplXml;
 
 public class Shop {
@@ -46,7 +47,8 @@ public class Shop {
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
 		// dao = new DaoImplJaxb();
-		dao = new DaoImplHibernate();
+		 dao = new DaoImplHibernate();
+		// dao = new DaoImplMongoDB();
 
 		this.inventory = dao.getInventory();
 
