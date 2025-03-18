@@ -47,8 +47,8 @@ public class Shop {
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
 		// dao = new DaoImplJaxb();
-		 dao = new DaoImplHibernate();
-		// dao = new DaoImplMongoDB();
+		// dao = new DaoImplHibernate();
+		 dao = new DaoImplMongoDB();
 
 		this.inventory = dao.getInventory();
 
