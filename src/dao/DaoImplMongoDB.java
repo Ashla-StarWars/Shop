@@ -16,6 +16,7 @@ import com.mongodb.client.model.Filters;
 
 import exception.EmployeeNotFoundException;
 import exception.InvalidPasswordException;
+import model.Amount;
 import model.Employee;
 import model.Product;
 import model.ProductList;
@@ -41,7 +42,7 @@ public class DaoImplMongoDB implements Dao {
 
 		try {
 			connect();
-			MongoCollection<Document> collection = database.getCollection("employee");
+			MongoCollection<Document> collection = database.getCollection("users");
 
 			// Buscar al empleado por employeeId
 			Document doc = collection.find(Filters.eq("employeeId", employeeId)).first();
@@ -90,12 +91,14 @@ public class DaoImplMongoDB implements Dao {
 					Document doc = cursor.next();
 					int id = doc.getInteger("id");
 					String name = doc.getString("name");
-					double price = doc.getDouble("wholesalerPrice");
+	                Document wholesalerPriceDoc = doc.get("wholesalerPrice", Document.class);
+	                double priceValue = wholesalerPriceDoc.getDouble("value");
+	                String priceCurrency = wholesalerPriceDoc.getString("currency");
 					int stock = doc.getInteger("stock");
 					boolean available = false;
 					if (stock > 0)
 						available = true;
-					Product product = new Product(id, name, price, available, stock);
+					Product product = new Product(id, name, new Amount(priceValue, priceCurrency), available, stock);
 					productList.add(product);
 				}
 			}
@@ -121,8 +124,11 @@ public class DaoImplMongoDB implements Dao {
 
 			// Recorrer la lista de productos y crear los documentos
 			for (Product product : lista.getProducts()) {
-				Document doc = new Document("id_product", product.getId()).append("name", product.getName())
-						.append("wholesalerPrice", product.getWholesalerPrice().getValue())
+				Document wholesalerPriceDoc = new Document("value", product.getWholesalerPrice().getValue())
+                        .append("currency", product.getWholesalerPrice().getCurrency());
+				Document doc = new Document("id", product.getId())
+						.append("name", product.getName())
+						.append("wholesalerPrice", wholesalerPriceDoc)
 						.append("available", product.isAvailable()).append("stock", product.getStock())
 						.append("created_at", createdAt);
 				documents.add(doc);
@@ -152,9 +158,14 @@ public class DaoImplMongoDB implements Dao {
 			connect();
 			MongoCollection<Document> collection = database.getCollection("inventory");
 
+	        // Crear un Document a partir del objeto Product
+	        Document priceDoc = new Document("value", item.getWholesalerPrice().getValue())
+	                            .append("currency", item.getWholesalerPrice().getCurrency());
 			// Crear un Document a partir del objeto Product
-			Document doc = new Document("id", item.getId()).append("name", item.getName())
-					.append("wholesalerPrice", item.getPrice()).append("available", item.isAvailable())
+			Document doc = new Document("id", item.getId())
+					.append("name", item.getName())
+					.append("wholesalerPrice", priceDoc)
+					.append("available", item.isAvailable())
 					.append("stock", item.getStock());
 
 			// Insertar el documento en la colección
@@ -176,10 +187,15 @@ public class DaoImplMongoDB implements Dao {
 
 			// Crear un filtro para encontrar el producto por nombre
 			Document filter = new Document("name", item.getName());
+			
+	        // Crear un Document a partir del objeto Product
+	        Document priceDoc = new Document("value", item.getWholesalerPrice().getValue())
+	                            .append("currency", item.getWholesalerPrice().getCurrency());
 
 			// Crear el documento con los nuevos valores
 			Document update = new Document("$set",
-					new Document("wholesalerPrice", item.getPrice()).append("stock", item.getStock()));
+					new Document("wholesalerPrice", priceDoc)
+					.append("stock", item.getStock()));
 
 			// Realizar la actualización
 			collection.updateOne(filter, update);

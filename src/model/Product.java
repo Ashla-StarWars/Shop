@@ -67,6 +67,17 @@ public class Product {
 		this.stock = stock;
 		totalProducts++;
 	}
+	public Product(int id, String name, Amount price, boolean available, int stock) {
+		super();
+		this.id = id;
+		this.name = name;
+		setWholesalerPrice(price);
+		this.publicPrice = new Amount(price.getValue() * 2, price.getCurrency());
+		this.price = price.getValue()*2;
+		this.available = available;
+		this.stock = stock;
+		totalProducts++;
+	}
 
 	@XmlAttribute(name = "id")
 	public int getId() {
