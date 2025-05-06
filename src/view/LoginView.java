@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import exception.EmployeeNotFoundException;
+import exception.InvalidPasswordException;
 import exception.LimitLoginException;
 
 import javax.swing.JLabel;
@@ -134,7 +136,16 @@ public class LoginView extends JFrame implements ActionListener, KeyListener {
 			boolean logged = false;
 
 			Employee employee = new Employee(null, user_id, user_psw);
-			logged = employee.login(user_id, user_psw);
+			try {
+				Employee employeeResponse = employee.dao.getEmployee(user_id, user_psw);
+				if(employeeResponse!=null) {
+					logged = true;
+				}
+			} catch (EmployeeNotFoundException | InvalidPasswordException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 
 			if (logged) {
 				System.out.println("Mostrar ventana ShopView");

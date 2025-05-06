@@ -2,6 +2,7 @@ package model;
 
 import dao.Dao;
 import dao.DaoImplJDBC;
+import dao.DaoImplMongoDB;
 import exception.EmployeeNotFoundException;
 import exception.InvalidPasswordException;
 import main.Logable;
@@ -16,7 +17,8 @@ public class Employee extends Person implements Logable {
 		super(name);
 		this.employeeId = id;
 		this.password = password;
-		this.dao = new DaoImplJDBC();
+		this.dao = new DaoImplMongoDB();
+		//this.dao = new DaoImplJDBC();
 	}
 
 	protected int getEmployeeId() {

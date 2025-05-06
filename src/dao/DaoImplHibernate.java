@@ -121,6 +121,7 @@ public class DaoImplHibernate implements Dao {
 			session.beginTransaction();
 			// Crear un producto de prueba
 			Product product = new Product();
+			System.out.println(item.getId());
 			product.setName(item.getName());
 			product.setPrice(item.getWholesalerPrice().getValue());
 			product.setStock(item.getStock());

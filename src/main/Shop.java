@@ -25,7 +25,10 @@ import dao.DaoImplFile;
 import dao.DaoImplHibernate;
 import dao.DaoImplJDBC;
 import dao.DaoImplJaxb;
+import dao.DaoImplMongoDB;
 import dao.DaoImplXml;
+import exception.EmployeeNotFoundException;
+import exception.InvalidPasswordException;
 
 public class Shop {
 
@@ -46,7 +49,8 @@ public class Shop {
 		// dao = new DaoImplFile();
 		// dao = new DaoImplXml();
 		// dao = new DaoImplJaxb();
-		dao = new DaoImplHibernate();
+		// dao = new DaoImplHibernate();
+		 dao = new DaoImplMongoDB();
 
 		this.inventory = dao.getInventory();
 
@@ -148,15 +152,32 @@ public class Shop {
 	 * @throws SQLException
 	 */
 	private void initSession() {
-		boolean logged = false;
-		Scanner scanner = new Scanner(System.in);
-		do {
-			System.out.print("Introduzca numero de empleado: ");
-			int user = scanner.nextInt();
-			System.out.print("Introduzca contrasenya: ");
-			String passw = scanner.next();
-			logged = employee.login(user, passw);
-		} while (!logged);
+	    boolean logged = false;
+	    int attempts = 0;
+	    Scanner scanner = new Scanner(System.in);
+
+	    while (attempts < 3 && !logged) {
+	        System.out.print("Introduzca numero de empleado: ");
+	        int user = scanner.nextInt();
+	        System.out.print("Introduzca contrasenya: ");
+	        String passw = scanner.next();
+
+	        try {
+	            Employee employeeResponse = dao.getEmployee(user, passw);
+	            if(employeeResponse!=null) {
+	            	logged = true;
+	            } else {
+		            attempts++;
+		            System.out.println("Intento incorrecto. Te quedan " + (3 - attempts) + " intentos.");
+		            if (attempts == 3) {
+		                System.out.println("Maximo numero de intentos alcanzado. Cerrando la aplicacion.");
+		                System.exit(1);
+		            }
+	            }
+	        } catch (EmployeeNotFoundException | InvalidPasswordException e) {
+	            e.printStackTrace();
+	        }
+	    }
 	}
 
 	/*
